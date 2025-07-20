@@ -1,0 +1,97 @@
+﻿<Page x:Class="BMI_client.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BMI_client.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page1">
+
+    <Page.Resources>
+        <Style x:Key="ElementButtonStyle" TargetType="Button">
+         
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border 
+                  x:Name="border"
+                  CornerRadius="25"
+                  BorderBrush="#1e645e"
+                  BorderThickness="5">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#0d7b3b" Offset="0"/>
+                                        <GradientStop Color="#098a8d" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <ContentPresenter 
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      TextBlock.TextAlignment="Center"/>
+                            </Border>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#0bd7b5"/>
+                                <Setter TargetName="border" Property="TextBlock.Foreground" Value="#0d5a1d"/>
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#83d89e" Offset="0"/>
+                                            <GradientStop Color="#3d9dfe" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="Opacity" Value="0.8"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#0d5a1d"/>
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#4dcace" Offset="0"/>
+                                            <GradientStop Color="#776fb8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="Opacity" Value="0.9"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+
+
+    <Grid Width="800" Height="450">
+        
+        <Label Content="BMI" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40"/>
+        <Label Content="Авторизация" HorizontalAlignment="Center" FontSize="40" Margin="0,50,0,341"/>
+
+        <TextBox Width="360" Height="56" FontSize="24" Margin="220,137,220,257" />
+        <TextBox Width="360" Height="56" FontSize="24" Margin="220,225,220,169" />
+
+        <Button Width="120" Style="{StaticResource ElementButtonStyle}" Height="64" Margin="338,301,342,85">
+            <TextBlock>Вход</TextBlock>
+        </Button>
+        
+        <Button Width="112" Click="ToRegistrationPage" Style="{StaticResource ElementButtonStyle}" Height="44" Margin="344,380,344,26">
+            <TextBlock>Регистрация</TextBlock>
+        </Button>
+
+
+    </Grid>
+    
+
+</Page>

@@ -1,0 +1,8 @@
+﻿<NavigationWindow x:Class="BMI_client.MainNav"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  Title="IMT App"
+                  Height="450" Width="800"
+                  Source="Pages/LoginPage.xaml"
+                  ShowsNavigationUI="False">
+</NavigationWindow>
