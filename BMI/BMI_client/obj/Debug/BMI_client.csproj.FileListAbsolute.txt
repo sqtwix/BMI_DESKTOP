@@ -26,3 +26,5 @@ C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\obj\Debug\BMI_clien
 C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\obj\Debug\BMI_client.pdb
 C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\obj\Debug\Pages\RegistrationPage.g.cs
 C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\obj\Debug\Pages\RegistrationPage.baml
+C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\obj\Debug\Pages\BMITrackingPage.g.cs
+C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\obj\Debug\Pages\BMITrackingPage.baml
