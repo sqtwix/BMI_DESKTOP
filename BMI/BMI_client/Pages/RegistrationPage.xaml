@@ -13,12 +13,14 @@
         <Label Content="Регистрация" HorizontalAlignment="Center" FontSize="40" Margin="0,54,0,334" />
 
 
-        <TextBox Width="360" Height="56" FontSize="24" Margin="220,137,220,257" />
-        <TextBox Width="360" Height="56" FontSize="24" Margin="220,225,220,169" />
+        <TextBox x:Name="Username" Width="360" Height="56" FontSize="24" Margin="220,137,220,257" />
+        <TextBox x:Name="Password" Width="360" Height="56" FontSize="24" Margin="220,225,220,169" />
 
-        <Button Width="120" Height="56" Margin="340,346,340,48">Вход</Button>
+        <Button Width="120" Height="56" Click="RegistrationUser" Margin="340,346,340,48">Вход</Button>
 
-        <Button Width="50" Click="ToAutorisationPage" Height="50" Margin="47,32,633,362">-></Button>
+        <Button Width="50" Click="ToAutorisationPage" Height="50" Margin="25,22,725,378">-></Button>
+
+        <Label x:Name="ErrorLabel" Width="300" Height="54" Foreground="Red" Content="" Margin="264,286,236,110"/>
 
 
 
