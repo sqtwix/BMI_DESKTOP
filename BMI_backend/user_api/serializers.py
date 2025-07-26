@@ -4,9 +4,11 @@ from .models import CustomUser
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('id', 'user_name', 'password')
-        extra_kwargs = {'password' : {'write-only' : True}}
+        fields = ('id', 'username', 'password')
+        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
-        user = CustomUser.objects.create_user(**validated_data)
-        return user
+        return CustomUser.objects.create_user(
+            username=validated_data['username'],
+            password=validated_data['password'],
+        )
