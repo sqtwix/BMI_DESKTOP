@@ -30,7 +30,7 @@ namespace BMI_client.Pages
         public void FindingBMI(object sender, RoutedEventArgs e) 
         {
             string s_height = Height.Text;
-            string s_weight = Height.Text;
+            string s_weight = Weight.Text;
 
             if (s_height == "")
             {

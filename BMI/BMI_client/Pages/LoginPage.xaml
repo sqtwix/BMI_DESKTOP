@@ -11,7 +11,7 @@
 
     <Page.Resources>
         <Style x:Key="ElementButtonStyle" TargetType="Button">
-         
+
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Padding" Value="10"/>
             <Setter Property="Margin" Value="5"/>
@@ -75,23 +75,27 @@
 
 
     <Grid Width="800" Height="450">
-        
+
         <Label Content="BMI" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40"/>
         <Label Content="Авторизация" HorizontalAlignment="Center" FontSize="40" Margin="0,50,0,341"/>
 
-        <TextBox Width="360" Height="56" FontSize="24" Margin="220,137,220,257" />
-        <TextBox Width="360" Height="56" FontSize="24" Margin="220,225,220,169" />
+        <Label Content="Имя" HorizontalAlignment="Left" FontSize="32" Margin="147,134,0,257"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" FontSize="32" Margin="100,222,0,169"/>
 
-        <Button Width="120" Style="{StaticResource ElementButtonStyle}" Height="64" Margin="338,301,342,85">
+
+        <TextBox x:Name="Username" Width="360" Height="56" FontSize="24" Margin="220,137,220,257" />
+        <TextBox x:Name="Password" Width="360" Height="56" FontSize="24" Margin="220,225,220,169" />
+
+        <Button Width="120" Click="Login" Style="{StaticResource ElementButtonStyle}" Height="64" Margin="338,301,342,85">
             <TextBlock>Вход</TextBlock>
         </Button>
-        
+
         <Button Width="112" Click="ToRegistrationPage" Style="{StaticResource ElementButtonStyle}" Height="44" Margin="344,380,344,26">
             <TextBlock>Регистрация</TextBlock>
         </Button>
 
 
     </Grid>
-    
+
 
 </Page>
