@@ -70,7 +70,8 @@ namespace BMI_client.Pages
 
                 if (responce.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Пользователь зарегестрирован");
+                    MessageBox.Show("Пользователь успешно зарегестрирован");
+                    NavigationService.Navigate(new BMITrackingPage());
                 }
                 else
                 {

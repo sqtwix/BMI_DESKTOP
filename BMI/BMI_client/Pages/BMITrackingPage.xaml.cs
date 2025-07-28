@@ -24,5 +24,33 @@ namespace BMI_client.Pages
         {
             InitializeComponent();
         }
+
+        double result_BMI; // global var for containing bmi value
+
+        public void FindingBMI(object sender, RoutedEventArgs e) 
+        {
+            string s_height = Height.Text;
+            string s_weight = Height.Text;
+
+            if (s_height == "")
+            {
+                MessageBox.Show("Введите рост!");
+            }
+            else if (s_weight == "")
+            {
+                MessageBox.Show("Введите вес!");
+            }
+            else
+            {
+                double height = Convert.ToDouble(s_height);
+                double weight = Convert.ToDouble(s_weight);
+
+                result_BMI = Math.Round((weight / Math.Pow((height / 100.0), 2)), 2);
+
+                ResultLabel.Content = string.Format(" Ваш индекс массы тела: {0}", result_BMI );
+
+            }
+
+        }
     }
 }

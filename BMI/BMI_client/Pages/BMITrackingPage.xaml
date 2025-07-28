@@ -11,12 +11,19 @@
     <Grid  Width="800" Height="450">
         <Label Content="BMI" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
-        <TextBox Width="420" Height="44" Margin="199,129,181,277" />
-        <TextBox Width="420" Height="44" Margin="199,225,181,181" />
+        <Label x:Name="H" Content="Рост (см)" Height="40" Width="110" FontSize="24" Margin="94,74,596,336" />
+        <Label x:Name="W" Content="Вес (кг)" Height="40" Width="100" FontSize="24" Margin="99,150,601,260" />
 
-        <Button Width="200" Height="45" Margin="309,315,291,90">
-            <TextBlock></TextBlock>
+
+        <TextBox Width="420" x:Name="Height" Height="44" Margin="199,74,181,332" />
+        <TextBox Width="420" x:Name="Weight" Height="44" Margin="199,148,181,258" />
+
+        <Button Width="200" Height="45" Click="FindingBMI" Margin="309,327,291,78">
+            <TextBlock>Вычислить</TextBlock>
         </Button>
+
+        <Label x:Name="ResultLabel" Width="320" Height="60" Margin="240,247,240,153"/>
+
 
     </Grid>
 </Page>
