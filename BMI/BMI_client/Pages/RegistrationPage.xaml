@@ -8,17 +8,114 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page2">
 
+    <Page.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#6eccfe" Offset="0"/>
+            <GradientStop Color="#b2a6db" Offset="1"/>
+        </LinearGradientBrush>
+    </Page.Background>
+
+    <Page.Resources>
+        <Style x:Key="ElementButtonStyle" TargetType="Button">
+
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border 
+              x:Name="border"
+              CornerRadius="32"
+              BorderBrush="#0000a0"
+              BorderThickness="4">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#0799c3" Offset="0"/>
+                                        <GradientStop Color="#07bd96" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <ContentPresenter 
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  TextBlock.TextAlignment="Center"/>
+                            </Border>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#0000ce"/>
+                                <Setter TargetName="border" Property="TextBlock.Foreground" Value="#0000ce"/>
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#83d89e" Offset="0"/>
+                                            <GradientStop Color="#3d9dfe" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="Opacity" Value="0.8"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#0d5a1d"/>
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#4dcace" Offset="0"/>
+                                            <GradientStop Color="#776fb8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="Opacity" Value="0.9"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Margin" Value="10,10,10,10"/>
+            <Setter Property="Foreground" Value="#0000a0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border 
+                x:Name="border"
+                Background="{TemplateBinding Background}"
+                BorderBrush="#0000a0"
+                BorderThickness="3"
+                CornerRadius="20">
+                            <ScrollViewer 
+                    Margin="0"
+                    x:Name="PART_ContentHost"
+                    VerticalScrollBarVisibility="Disabled"
+                    HorizontalScrollBarVisibility="Disabled"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid  Width="800" Height="450">
-        <Label Content="BMI" HorizontalAlignment="Center" FontSize="40" VerticalAlignment="Top"/>
+        <Label Content="BMI" FontWeight="Bold" HorizontalAlignment="Center" FontSize="40" VerticalAlignment="Top"/>
         <Label Content="Регистрация" HorizontalAlignment="Center" FontSize="40" Margin="0,54,0,334" />
 
+        <Label  Width="80" Height="50" FontSize="30" Content="Имя" Margin="140,140,580,260" />
+        <Label  Width="115" Height="50" FontSize="30" Content="Пароль" Margin="105,225,580,175" />
 
-        <TextBox x:Name="Username" Width="360" Height="56" FontSize="24" Margin="220,137,220,257" />
-        <TextBox x:Name="Password" Width="360" Height="56" FontSize="24" Margin="220,225,220,169" />
 
-        <Button Width="120" Height="56" Click="RegistrationUser" Margin="340,346,340,48">Вход</Button>
 
-        <Button Width="50" Click="ToAutorisationPage" Height="50" Margin="25,22,725,378">-></Button>
+        <TextBox x:Name="Username" Width="360" Height="56" Style="{StaticResource TextBoxStyle}" FontSize="24" Margin="220,137,220,257" />
+        <TextBox x:Name="Password" Width="360" Height="56" Style="{StaticResource TextBoxStyle}" FontSize="24" Margin="220,225,220,169" />
+
+        <Button Width="144" Height="64" Style="{StaticResource ElementButtonStyle}" Click="RegistrationUser" FontSize="30" Foreground="#0000a0" Margin="328,340,328,46">Вход</Button>
+        <Button Width="50"  Style="{StaticResource ElementButtonStyle}" Click="ToAutorisationPage" Height="50" Foreground="#0000a0" Margin="25,22,725,378">➜</Button>
 
         <Label x:Name="ErrorLabel" Width="300" Height="54" Foreground="Red" Content="" Margin="264,286,236,110"/>
 

@@ -9,6 +9,13 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page1">
 
+    <Page.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#6eccfe" Offset="0"/>
+            <GradientStop Color="#b2a6db" Offset="1"/>
+        </LinearGradientBrush>
+    </Page.Background>
+
     <Page.Resources>
         <Style x:Key="ElementButtonStyle" TargetType="Button">
 
@@ -21,13 +28,13 @@
                         <Grid>
                             <Border 
                   x:Name="border"
-                  CornerRadius="25"
-                  BorderBrush="#1e645e"
-                  BorderThickness="5">
+                  CornerRadius="32"
+                  BorderBrush="#0000a0"
+                  BorderThickness="4">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                        <GradientStop Color="#0d7b3b" Offset="0"/>
-                                        <GradientStop Color="#098a8d" Offset="1"/>
+                                        <GradientStop Color="#0799c3" Offset="0"/>
+                                        <GradientStop Color="#07bd96" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Border.Background>
 
@@ -40,8 +47,8 @@
 
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="#0bd7b5"/>
-                                <Setter TargetName="border" Property="TextBlock.Foreground" Value="#0d5a1d"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#0000ce"/>
+                                <Setter TargetName="border" Property="TextBlock.Foreground" Value="#0000ce"/>
                                 <Setter TargetName="border" Property="Background">
                                     <Setter.Value>
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -70,28 +77,55 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#0000a0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border 
+                    x:Name="border"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="#0000a0"
+                    BorderThickness="3"
+                    CornerRadius="20">
+                            <ScrollViewer 
+                        Margin="0"
+                        x:Name="PART_ContentHost"
+                        VerticalScrollBarVisibility="Disabled"
+                        HorizontalScrollBarVisibility="Disabled"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
 
 
     <Grid Width="800" Height="450">
 
-        <Label Content="BMI" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40"/>
-        <Label Content="Авторизация" HorizontalAlignment="Center" FontSize="40" Margin="0,50,0,341"/>
+        <Label Content="BMI" FontWeight="Bold"  Foreground="#0000a0" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40"/>
+        <Label Content="Авторизация"  Foreground="#0000a0" HorizontalAlignment="Center" FontSize="36" Margin="0,50,0,341"/>
 
-        <Label Content="Имя" HorizontalAlignment="Left" FontSize="32" Margin="147,134,0,257"/>
-        <Label Content="Пароль" HorizontalAlignment="Left" FontSize="32" Margin="100,222,0,169"/>
+        <Label Content="Имя" Foreground="#0000a0" HorizontalAlignment="Left" FontSize="30" Margin="151,116,0,274"/>
+        <Label Content="Пароль"  Foreground="#0000a0" HorizontalAlignment="Left" FontSize="30" Margin="102,207,0,189"/>
 
 
-        <TextBox x:Name="Username" Width="360" Height="56" FontSize="24" Margin="220,137,220,257" />
-        <TextBox x:Name="Password" Width="360" Height="56" FontSize="24" Margin="220,225,220,169" />
+        <TextBox x:Name="Username" Padding="5" Style="{StaticResource TextBoxStyle}" Width="368" Height="52" FontSize="26" Margin="220,120,212,278" />
+        <TextBox x:Name="Password" Padding="5" Style="{StaticResource TextBoxStyle}" Width="368" Height="52" FontSize="26" Margin="220,208,212,190" />
 
-        <Button Width="120" Click="Login" Style="{StaticResource ElementButtonStyle}" Height="64" Margin="338,301,342,85">
+        <Button Width="158" Click="Login" FontSize="44" Foreground="#0000a0"  Style="{StaticResource ElementButtonStyle}"  Height="78" Margin="321,304,321,68">
             <TextBlock>Вход</TextBlock>
         </Button>
 
-        <Button Width="112" Click="ToRegistrationPage" Style="{StaticResource ElementButtonStyle}" Height="44" Margin="344,380,344,26">
+        <Button Width="158" Click="ToRegistrationPage" FontSize="24"  Foreground="#0000a0" Style="{StaticResource ElementButtonStyle}" Height="62" Margin="499,312,143,76">
             <TextBlock>Регистрация</TextBlock>
+        </Button>
+
+        <Button Width="158" Click="Exit" FontSize="24" Foreground="#0000a0" Style="{StaticResource ElementButtonStyle}" Height="62" Margin="147,312,0,76" HorizontalAlignment="Left">
+            <TextBlock>✖</TextBlock>
         </Button>
 
 

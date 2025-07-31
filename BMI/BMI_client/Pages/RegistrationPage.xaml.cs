@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using BMI_client.Classes;
 
 namespace BMI_client.Pages
 {
@@ -71,6 +72,17 @@ namespace BMI_client.Pages
                 if (responce.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Пользователь успешно зарегестрирован");
+
+                    string responseJson = await responce.Content.ReadAsStringAsync();
+
+                    // Десериализуем JSON с токенами
+                    var tokenData = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseJson);
+
+
+                    SessionManager.AccessToken = tokenData["access"];
+                    SessionManager.RefreshToken = tokenData["refresh"];
+                    SessionManager.UserName = username;
+
                     NavigationService.Navigate(new BMITrackingPage());
                 }
                 else

@@ -8,28 +8,125 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="BMITrackingPage">
 
-    <Grid  Width="800" Height="450">
-        <Label Content="BMI" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+    <Page.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#6eccfe" Offset="0"/>
+            <GradientStop Color="#b2a6db" Offset="1"/>
+        </LinearGradientBrush>
+    </Page.Background>
 
-        <Label x:Name="H" Content="Рост (см)" Height="40" Width="110" FontSize="24" Margin="94,107,596,303" />
-        <Label x:Name="W" Content="Вес (кг)" Height="40" Width="100" FontSize="24" Margin="99,183,601,227" />
+    <Page.Resources>
+        <Style x:Key="ElementButtonStyle" TargetType="Button">
+
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border 
+              x:Name="border"
+              CornerRadius="32"
+              BorderBrush="#0000a0"
+              BorderThickness="4">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#0799c3" Offset="0"/>
+                                        <GradientStop Color="#07bd96" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <ContentPresenter 
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  TextBlock.TextAlignment="Center"/>
+                            </Border>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#0000ce"/>
+                                <Setter TargetName="border" Property="TextBlock.Foreground" Value="#0000ce"/>
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#83d89e" Offset="0"/>
+                                            <GradientStop Color="#3d9dfe" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="Opacity" Value="0.8"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#0d5a1d"/>
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#4dcace" Offset="0"/>
+                                            <GradientStop Color="#776fb8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="Opacity" Value="0.9"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="Foreground" Value="#0000a0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border 
+                x:Name="border"
+                Background="{TemplateBinding Background}"
+                BorderBrush="#0000a0"
+                BorderThickness="3"
+                CornerRadius="20">
+                            <ScrollViewer 
+                    Margin="0"
+                    x:Name="PART_ContentHost"
+                    VerticalScrollBarVisibility="Disabled"
+                    HorizontalScrollBarVisibility="Disabled"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+
+    <Grid  Width="800" Height="450">
+        <Label Content="BMI" FontWeight="Bold" Foreground="#0000a0" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+
+        <Label x:Name="H" Content="Рост (см)"  Foreground="#0000a0" Height="40" Width="120" FontSize="26" Margin="84,107,606,303" />
+        <Label x:Name="W" Content="Вес (кг)"  Foreground="#0000a0" Height="40" Width="100" FontSize="26" Margin="84,182,616,228" />
 
         <Label x:Name="NameLabel" Content="" Height="40" Width="200" FontSize="24" Margin="49,21,551,389" />
 
+        <TextBox Padding="5" Width="420" x:Name="Height" Style="{StaticResource TextBoxStyle}" FontSize="28" Height="54" Margin="199,100,181,296" />
+        <TextBox Padding="5" Width="420"  x:Name="Weight" Style="{StaticResource TextBoxStyle}" FontSize="28" Height="54" Margin="199,188,181,208" />
 
-
-        <TextBox Width="420" x:Name="Height" Height="44" Margin="199,107,181,299" />
-        <TextBox Width="420" x:Name="Weight" Height="44" Margin="199,181,181,225" />
-
-        <Button Width="200" Height="45" Click="FindingBMI" Margin="309,327,291,78">
+        <Button Width="230" Style="{StaticResource ElementButtonStyle}" Foreground="#0000a0" FontSize="30" Height="72" Click="FindingBMI" Margin="294,328,276,50">
             <TextBlock>Вычислить</TextBlock>
         </Button>
 
-        <Button Height="40" Click="ToAuth" Width="40" Margin="734,27,26,383">
+        <Button Height="56" Style="{StaticResource ElementButtonStyle}" Click="ToAuth" FontWeight="Bold" FontSize="30" Foreground="#0000a0" Width="56" Margin="721,21,23,373">
             <TextBlock>⌂</TextBlock>
         </Button>
 
-        <Label x:Name="ResultLabel" Width="320" Height="60" Margin="240,247,240,153"/>
+        <Button x:Name="SaveButton" Height="58" Style="{StaticResource ElementButtonStyle}"  Visibility="Hidden" FontWeight="Bold" FontSize="24" Foreground="#0000a0" Width="156" Margin="608,249,36,143">
+            <TextBlock>Сохранить</TextBlock>
+        </Button>
+
+        <Label x:Name="ResultLabel" HorizontalContentAlignment="Stretch" Foreground="#0000a0" Width="480" Height="60" FontSize="28" Margin="84,249,236,141"/>
 
 
     </Grid>

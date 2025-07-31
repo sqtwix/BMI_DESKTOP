@@ -28,6 +28,15 @@ namespace BMI_client.Pages
             InitializeComponent();
         }
 
+        public void Exit(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Выйти из приложения?", "Подтверждение",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
         public void ToRegistrationPage(object sender, RoutedEventArgs e) 
         {
             NavigationService.Navigate(new RegistrationPage());

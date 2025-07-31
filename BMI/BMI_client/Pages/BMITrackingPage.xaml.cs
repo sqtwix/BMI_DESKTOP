@@ -56,6 +56,7 @@ namespace BMI_client.Pages
                 result_BMI = Math.Round((weight / Math.Pow((height / 100.0), 2)), 2);
 
                 ResultLabel.Content = string.Format(" Ваш индекс массы тела: {0}", result_BMI );
+                SaveButton.Visibility = Visibility.Visible;
             }
 
         }
