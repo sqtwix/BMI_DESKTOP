@@ -9,17 +9,24 @@
       Title="BMITrackingPage">
 
     <Grid  Width="800" Height="450">
-        <Label Content="BMI" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <Label Content="BMI" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,4,0,0"/>
 
-        <Label x:Name="H" Content="Рост (см)" Height="40" Width="110" FontSize="24" Margin="94,74,596,336" />
-        <Label x:Name="W" Content="Вес (кг)" Height="40" Width="100" FontSize="24" Margin="99,150,601,260" />
+        <Label x:Name="H" Content="Рост (см)" Height="40" Width="110" FontSize="24" Margin="94,107,596,303" />
+        <Label x:Name="W" Content="Вес (кг)" Height="40" Width="100" FontSize="24" Margin="99,183,601,227" />
+
+        <Label x:Name="NameLabel" Content="" Height="40" Width="200" FontSize="24" Margin="49,21,551,389" />
 
 
-        <TextBox Width="420" x:Name="Height" Height="44" Margin="199,74,181,332" />
-        <TextBox Width="420" x:Name="Weight" Height="44" Margin="199,148,181,258" />
+
+        <TextBox Width="420" x:Name="Height" Height="44" Margin="199,107,181,299" />
+        <TextBox Width="420" x:Name="Weight" Height="44" Margin="199,181,181,225" />
 
         <Button Width="200" Height="45" Click="FindingBMI" Margin="309,327,291,78">
             <TextBlock>Вычислить</TextBlock>
+        </Button>
+
+        <Button Height="40" Click="ToAuth" Width="40" Margin="734,27,26,383">
+            <TextBlock>⌂</TextBlock>
         </Button>
 
         <Label x:Name="ResultLabel" Width="320" Height="60" Margin="240,247,240,153"/>

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BMI_client.Classes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,12 +28,12 @@ namespace BMI_client.Pages
             InitializeComponent();
         }
 
-        public void ToRegistrationPage(object sender, RoutedEventArgs e)
+        public void ToRegistrationPage(object sender, RoutedEventArgs e) 
         {
             NavigationService.Navigate(new RegistrationPage());
         }
 
-        public async void  Login(object sender, RoutedEventArgs e)
+        public async void  Login(object sender, RoutedEventArgs e)  // Call Auth fucn
         {
             await AuthUser();
         }
@@ -40,33 +41,40 @@ namespace BMI_client.Pages
         public async Task AuthUser() // Api to make new user
         {
             var httpClient = new HttpClient();
-            var url = "http://127.0.0.1:8080/user_api/login/";
+            var url = "http://127.0.0.1:8080/user_api/login/"; // url of local server
 
-            string username = Username.Text;
+            string username = Username.Text; 
             string password = Password.Text;
 
             if (username == "" || username == " " || password == "" || password == " ")
             {
-                //ErrorLabel.Content = "Заполните все поля!!!";
+                MessageBox.Show( "Заполните все поля!!!");
             }
-           
             else
             {
-                var loginData = new
+                var loginData = new  // data form for posting
                 {
                     username = username,
                     password = password,
                 };
 
-                string json = JsonConvert.SerializeObject(loginData);
+                string json = JsonConvert.SerializeObject(loginData);  
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var responce = await httpClient.PostAsync(url, content);
+                var responce = await httpClient.PostAsync(url, content);  // Posting username and password on server for verification
 
-                if (responce.IsSuccessStatusCode)
+                if (responce.IsSuccessStatusCode)  
                 {
                     string responseJson = await responce.Content.ReadAsStringAsync();
-                    NavigationService.Navigate(new BMITrackingPage());
+
+                    // Десериализуем JSON с токенами
+                    var tokenData = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseJson);
+
+                    SessionManager.AccessToken = tokenData["access"];
+                    SessionManager.RefreshToken = tokenData["refresh"];
+                    SessionManager.UserName = username;
+
+                    NavigationService.Navigate(new BMITrackingPage()); // navigation to main bmi 
                 }
                 else
                 {
