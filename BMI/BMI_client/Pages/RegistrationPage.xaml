@@ -109,15 +109,13 @@
         <Label  Width="80" Height="50" FontSize="30" Content="Имя" Margin="140,140,580,260" />
         <Label  Width="115" Height="50" FontSize="30" Content="Пароль" Margin="105,225,580,175" />
 
+        <TextBox x:Name="Username" Width="360" Height="56" Style="{StaticResource TextBoxStyle}" FontSize="24" Padding="5" Margin="220,137,220,257" />
+        <TextBox x:Name="Password" Width="360" Height="56" Style="{StaticResource TextBoxStyle}" FontSize="24" Padding="5" Margin="220,225,220,169" />
 
-
-        <TextBox x:Name="Username" Width="360" Height="56" Style="{StaticResource TextBoxStyle}" FontSize="24" Margin="220,137,220,257" />
-        <TextBox x:Name="Password" Width="360" Height="56" Style="{StaticResource TextBoxStyle}" FontSize="24" Margin="220,225,220,169" />
-
-        <Button Width="144" Height="64" Style="{StaticResource ElementButtonStyle}" Click="RegistrationUser" FontSize="30" Foreground="#0000a0" Margin="328,340,328,46">Вход</Button>
+        <Button Width="158" Height="70" Style="{StaticResource ElementButtonStyle}" Click="RegistrationUser" FontSize="32" Foreground="#0000a0" Margin="321,340,321,40">Вход</Button>
         <Button Width="50"  Style="{StaticResource ElementButtonStyle}" Click="ToAutorisationPage" Height="50" Foreground="#0000a0" Margin="25,22,725,378">➜</Button>
 
-        <Label x:Name="ErrorLabel" Width="300" Height="54" Foreground="Red" Content="" Margin="264,286,236,110"/>
+        <Label x:Name="ErrorLabel" Width="300" Height="54" Foreground="Red" Content="" Margin="250,286,250,110"/>
 
 
 

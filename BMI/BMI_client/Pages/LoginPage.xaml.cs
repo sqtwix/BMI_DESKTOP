@@ -88,7 +88,7 @@ namespace BMI_client.Pages
                 else
                 {
                     string error = await responce.Content.ReadAsStringAsync();
-                    MessageBox.Show("Ошибка авторизации: " + error);
+                    MessageBox.Show("Неправильный логин или пароль");
                 }
 
             }
