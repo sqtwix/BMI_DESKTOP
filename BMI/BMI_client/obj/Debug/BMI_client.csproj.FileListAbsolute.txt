@@ -30,3 +30,5 @@ C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\obj\Debug\Pages\BMI
 C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\obj\Debug\Pages\BMITrackingPage.baml
 C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\obj\Debug\Pages\StatsGraphicsPage.g.cs
+C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\obj\Debug\Pages\StatsGraphicsPage.baml

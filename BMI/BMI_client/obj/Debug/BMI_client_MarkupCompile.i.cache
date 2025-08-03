@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\App.xaml
-4-794006800
+5-452972787
 
-10271034011
+121016494627
 171395473852
-MainNav.xaml;Pages\BMITrackingPage.xaml;Pages\LoginPage.xaml;Pages\RegistrationPage.xaml;
+MainNav.xaml;Pages\BMITrackingPage.xaml;Pages\LoginPage.xaml;Pages\RegistrationPage.xaml;Pages\StatsGraphicsPage.xaml;
 
-True
+False
 
