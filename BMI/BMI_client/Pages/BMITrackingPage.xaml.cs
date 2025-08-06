@@ -37,6 +37,11 @@ namespace BMI_client.Pages
             NavigationService.Navigate(new LoginPage());
         }
 
+        public void ToStatsGraphs(object sender, RoutedEventArgs e)  // To Stats page
+        {
+            NavigationService.Navigate(new StatsGraphicsPage());
+        }
+
         public async void SaveBMI(object sender, RoutedEventArgs e)
         {
             string weight = Weight.Text;

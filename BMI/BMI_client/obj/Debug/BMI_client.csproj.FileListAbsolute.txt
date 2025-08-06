@@ -32,3 +32,9 @@ C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\bin\Debug\Newtonsof
 C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\obj\Debug\Pages\StatsGraphicsPage.g.cs
 C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\obj\Debug\Pages\StatsGraphicsPage.baml
+C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\bin\Debug\LiveCharts.dll
+C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\bin\Debug\LiveCharts.pdb
+C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\bin\Debug\LiveCharts.xml
+C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Пользователь\BMI_DESKTOP\BMI\BMI_client\bin\Debug\LiveCharts.Wpf.xml

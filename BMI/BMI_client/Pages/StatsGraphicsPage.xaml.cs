@@ -1,4 +1,6 @@
 ﻿using BMI_client.Classes;
+using LiveCharts;
+using LiveCharts.Wpf;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,16 +20,49 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
 namespace BMI_client.Pages
 {
     /// <summary>
     /// Логика взаимодействия для StatsGraphicsPage.xaml
     /// </summary>
+    
     public partial class StatsGraphicsPage : Page
     {
-        public StatsGraphicsPage()
+        public SeriesCollection MySeries { get; set; }
+
+        public  StatsGraphicsPage()
         {
             InitializeComponent();
+            LoadCharts();
+        }
+
+        public async void LoadCharts()
+        {
+            var bmiValues = new ChartValues<double> { };
+
+
+            var bmi_records = await GetBMIStats();
+            foreach (var item in bmi_records)
+            {
+                bmiValues.Add(item.bmi);
+            }
+
+            MySeries = new SeriesCollection
+            {
+
+                new LineSeries
+                {
+                    Title = "BMI",
+                    Values = bmiValues,
+                    PointGeometry = DefaultGeometries.Circle
+                     
+                }
+             }; 
+            // Bind the data context to this instance
+            DataContext = this;
+
         }
 
         public async Task<List<BMIRecord>> GetBMIStats()
