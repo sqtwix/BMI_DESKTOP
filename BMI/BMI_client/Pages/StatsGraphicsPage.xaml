@@ -11,14 +11,47 @@
 
     <Grid>
         <Grid>
-            <lvc:CartesianChart Width="680" Height="380" Series="{Binding MySeries}" LegendLocation="Right">
-                <lvc:CartesianChart.AxisX>
-                    <lvc:Axis Title="Дата" Labels="{Binding Labels}"></lvc:Axis>
-                </lvc:CartesianChart.AxisX>
-                <lvc:CartesianChart.AxisY>
-                    <lvc:Axis Title="BMI"></lvc:Axis>
-                </lvc:CartesianChart.AxisY>
-            </lvc:CartesianChart>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                HorizontalScrollBarVisibility="Disabled">
+                <Grid ShowGridLines="False">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="420"/>
+                        <RowDefinition Height="420"/>
+                        <RowDefinition Height="420"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="700"/>
+                    </Grid.ColumnDefinitions>
+
+                    <lvc:CartesianChart Width="680" Grid.Row="0" Height="380" Series="{Binding BMISeries}" LegendLocation="Right">
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Title="Дата" Labels="{Binding Labels}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Title="BMI"></lvc:Axis>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+
+                    <lvc:CartesianChart Width="680" Grid.Row="1" Height="380" Series="{Binding WeightSeries}" LegendLocation="Right">
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Title="Дата" Labels="{Binding Labels}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Title="BMI"></lvc:Axis>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+
+                    <lvc:CartesianChart Width="680" Grid.Row="2" Height="380" Series="{Binding HeightSeries}" LegendLocation="Right">
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Title="Дата" Labels="{Binding Labels}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Title="BMI"></lvc:Axis>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+                </Grid>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </Page>

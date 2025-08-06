@@ -30,28 +30,43 @@ namespace BMI_client.Pages
     
     public partial class StatsGraphicsPage : Page
     {
-        public SeriesCollection MySeries { get; set; }
+        public SeriesCollection BMISeries { get; set; }
+        public SeriesCollection WeightSeries { get; set; }
+        public SeriesCollection HeightSeries { get; set; }
 
-        public  StatsGraphicsPage()
+
+
+        public StatsGraphicsPage()
         {
             InitializeComponent();
             LoadCharts();
         }
 
-        public async void LoadCharts()
+        public async void LoadCharts() // Async function for getting list of bmi, weight, height data and building graphic
         {
-            var bmiValues = new ChartValues<double> { };
+            var bmiValues = new ChartValues<double> { };  //BMI Data for chart
+            var weightValues = new ChartValues<double> { };  //Weight Data for chart
+            var heightValues = new ChartValues<double> { };  //Height Data for chart
 
+            var bmi_records = await GetBMIStats();  // List of objects of class BMIRecords
 
-            var bmi_records = await GetBMIStats();
-            foreach (var item in bmi_records)
+            foreach (var item in bmi_records)  // Loop for adding only bmi to bmiValues
             {
                 bmiValues.Add(item.bmi);
             }
 
-            MySeries = new SeriesCollection
+            foreach (var item in bmi_records)  // Loop for adding only weight to weightValues
             {
+                weightValues.Add(item.weight);
+            }
 
+            foreach (var item in bmi_records)  // Loop for adding only height to heightValues
+            {
+                heightValues.Add(item.height);
+            }
+
+            BMISeries = new SeriesCollection  // Series Collection for building bmi chart
+            {
                 new LineSeries
                 {
                     Title = "BMI",
@@ -59,13 +74,34 @@ namespace BMI_client.Pages
                     PointGeometry = DefaultGeometries.Circle
                      
                 }
-             }; 
+             };
+
+            WeightSeries = new SeriesCollection  // Series Collection for building weight chart
+            {
+                new LineSeries
+                {
+                    Title = "Weight",
+                    Values = weightValues,
+                    PointGeometry = DefaultGeometries.Circle
+
+                }
+             };
+
+            HeightSeries = new SeriesCollection  // Series Collection for building height chart
+            {
+                new LineSeries
+                {
+                    Title = "Height",
+                    Values = heightValues,
+                    PointGeometry = DefaultGeometries.Circle
+
+                }
+             };
             // Bind the data context to this instance
             DataContext = this;
-
         }
 
-        public async Task<List<BMIRecord>> GetBMIStats()
+        public async Task<List<BMIRecord>> GetBMIStats()  // Async API function for getting data from db
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", SessionManager.AccessToken); // Token for id
