@@ -72,12 +72,17 @@
         </Style>
     </Page.Resources>
 
+    <Grid>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="700"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="0"  Style="{StaticResource ElementButtonStyle}" Click="ToBMI"   FontSize="40" FontWeight="Bold"   Width="60" Height="60" Margin="20,19,20,371">
+        <Button Grid.Column="1"  Style="{StaticResource ElementButtonStyle}" Click="ToBMI"   FontSize="40" FontWeight="Bold"   Width="60" Height="60" Margin="10,10,0,370">
             <TextBlock VerticalAlignment="Center">→</TextBlock>
         </Button>
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" 
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" 
                 HorizontalScrollBarVisibility="Disabled">
             <Grid ShowGridLines="False">
                 <Grid.RowDefinitions>
@@ -118,5 +123,5 @@
                 </lvc:CartesianChart>
             </Grid>
         </ScrollViewer>
-    
+    </Grid>
 </Page>
