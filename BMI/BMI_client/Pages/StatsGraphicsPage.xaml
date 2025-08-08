@@ -6,52 +6,117 @@
       xmlns:local="clr-namespace:BMI_client.Pages"
       mc:Ignorable="d" 
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="810"
       Title="StatsGraphicsPage">
 
-    <Grid>
-        <Grid>
-            <ScrollViewer VerticalScrollBarVisibility="Auto" 
+    <Page.Resources>
+        <Style x:Key="ElementButtonStyle" TargetType="Button">
+
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border 
+          x:Name="border"
+          CornerRadius="32"
+          BorderBrush="#0000a0"
+          BorderThickness="4">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#0799c3" Offset="0"/>
+                                        <GradientStop Color="#07bd96" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <ContentPresenter 
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              TextBlock.TextAlignment="Center"/>
+                            </Border>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#0000ce"/>
+                                <Setter TargetName="border" Property="TextBlock.Foreground" Value="#0000ce"/>
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#83d89e" Offset="0"/>
+                                            <GradientStop Color="#3d9dfe" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="Opacity" Value="0.8"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#0d5a1d"/>
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#4dcace" Offset="0"/>
+                                            <GradientStop Color="#776fb8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="Opacity" Value="0.9"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+
+
+        <Button Grid.Column="0"  Style="{StaticResource ElementButtonStyle}" Click="ToBMI"   FontSize="40" FontWeight="Bold"   Width="60" Height="60" Margin="20,19,20,371">
+            <TextBlock VerticalAlignment="Center">→</TextBlock>
+        </Button>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" 
                 HorizontalScrollBarVisibility="Disabled">
-                <Grid ShowGridLines="False">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="420"/>
-                        <RowDefinition Height="420"/>
-                        <RowDefinition Height="420"/>
-                    </Grid.RowDefinitions>
+            <Grid ShowGridLines="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="420"/>
+                    <RowDefinition Height="420"/>
+                    <RowDefinition Height="420"/>
+                </Grid.RowDefinitions>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="700"/>
-                    </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="700"/>
+                </Grid.ColumnDefinitions>
 
-                    <lvc:CartesianChart Width="700" Grid.Row="0" Height="380" Series="{Binding BMISeries}"  LegendLocation="Right">
-                        <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Title="Дата" Labels="{Binding Labels}" Foreground="#0000a0" FontSize="16"></lvc:Axis>
-                        </lvc:CartesianChart.AxisX>
-                        <lvc:CartesianChart.AxisY>
-                            <lvc:Axis FontSize="16"  Foreground="#0000a0" Title="BMI"></lvc:Axis>
-                        </lvc:CartesianChart.AxisY>
-                    </lvc:CartesianChart>
+                <lvc:CartesianChart Width="700" Grid.Row="0" Height="380" Series="{Binding BMISeries}"  LegendLocation="Right">
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Дата" Labels="{Binding Labels}" Foreground="#0000a0" FontSize="16"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis FontSize="16"  Foreground="#0000a0" Title="BMI"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
 
-                    <lvc:CartesianChart Width="700" Grid.Row="1" Height="380" Series="{Binding WeightSeries}" LegendLocation="Right">
-                        <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Title="Дата"  Foreground="#0000a0" FontSize="16" Labels="{Binding Labels}"></lvc:Axis>
-                        </lvc:CartesianChart.AxisX>
-                        <lvc:CartesianChart.AxisY>
-                            <lvc:Axis FontSize="16"  Foreground="#0000a0" Title="Weight"></lvc:Axis>
-                        </lvc:CartesianChart.AxisY>
-                    </lvc:CartesianChart>
+                <lvc:CartesianChart Width="700" Grid.Row="1" Height="380" Series="{Binding WeightSeries}" LegendLocation="Right">
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Дата"  Foreground="#0000a0" FontSize="16" Labels="{Binding Labels}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis FontSize="16"  Foreground="#0000a0" Title="Weight"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
 
-                    <lvc:CartesianChart Width="700" Grid.Row="2" FontSize="20" Height="380" Series="{Binding HeightSeries}" LegendLocation="Right">
-                        <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Title="Дата" FontSize="16" Foreground="#0000a0" Labels="{Binding Labels}"></lvc:Axis>
-                        </lvc:CartesianChart.AxisX>
-                        <lvc:CartesianChart.AxisY>
-                            <lvc:Axis FontSize="16"  Foreground="#0000a0" Title="Height"></lvc:Axis>
-                        </lvc:CartesianChart.AxisY>
-                    </lvc:CartesianChart>
-                </Grid>
-            </ScrollViewer>
-        </Grid>
-    </Grid>
+                <lvc:CartesianChart Width="700" Grid.Row="2" FontSize="20" Height="380" Series="{Binding HeightSeries}" LegendLocation="Right">
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Дата" FontSize="16" Foreground="#0000a0" Labels="{Binding Labels}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis FontSize="16"  Foreground="#0000a0" Title="Height"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
+            </Grid>
+        </ScrollViewer>
+    
 </Page>

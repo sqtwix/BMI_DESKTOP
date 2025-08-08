@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Cache;
 using System.Net.Http;
+using System.Runtime.Remoting.Channels;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -72,7 +73,7 @@ namespace BMI_client.Pages
                     Title = "BMI",
                     Values = bmiValues,
                     PointGeometry = DefaultGeometries.Circle,
-                    PointGeometrySize = 5
+                    PointGeometrySize = 8
                 }
              };
 
@@ -83,7 +84,7 @@ namespace BMI_client.Pages
                     Title = "Weight",
                     Values = weightValues,
                     PointGeometry = DefaultGeometries.Circle,
-                    PointGeometrySize = 5
+                    PointGeometrySize = 8
                 }
              };
 
@@ -94,7 +95,7 @@ namespace BMI_client.Pages
                     Title = "Height",
                     Values = heightValues,
                     PointGeometry = DefaultGeometries.Circle,
-                    PointGeometrySize = 5
+                    PointGeometrySize = 8
                 }
              };
 
@@ -127,6 +128,11 @@ namespace BMI_client.Pages
                 return new List<BMIRecord>();
             }
 
+        }
+
+        public void ToBMI(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new BMITrackingPage());
         }
     }
 }
