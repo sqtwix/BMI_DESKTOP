@@ -33,6 +33,8 @@ namespace BMI_client.Pages
         public SeriesCollection BMISeries { get; set; }
         public SeriesCollection WeightSeries { get; set; }
         public SeriesCollection HeightSeries { get; set; }
+        public string[] Labels { get; set; }
+
 
 
 
@@ -47,6 +49,9 @@ namespace BMI_client.Pages
             var bmiValues = new ChartValues<double> { };  //BMI Data for chart
             var weightValues = new ChartValues<double> { };  //Weight Data for chart
             var heightValues = new ChartValues<double> { };  //Height Data for chart
+            var dateValues = new List<string>();  //Date Data for chart
+
+
 
             var bmi_records = await GetBMIStats();  // List of objects of class BMIRecords
 
@@ -63,6 +68,11 @@ namespace BMI_client.Pages
             foreach (var item in bmi_records)  // Loop for adding only height to heightValues
             {
                 heightValues.Add(item.height);
+            }
+
+            foreach (var item in bmi_records)  // Loop for adding only adte to dateValues
+            {
+                dateValues.Add(item.date.ToString("dd.MM"));
             }
 
             BMISeries = new SeriesCollection  // Series Collection for building bmi chart
@@ -97,6 +107,8 @@ namespace BMI_client.Pages
 
                 }
              };
+
+            Labels = dateValues.ToArray();
             // Bind the data context to this instance
             DataContext = this;
         }
