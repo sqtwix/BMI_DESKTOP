@@ -55,23 +55,13 @@ namespace BMI_client.Pages
 
             var bmi_records = await GetBMIStats();  // List of objects of class BMIRecords
 
-            foreach (var item in bmi_records)  // Loop for adding only bmi to bmiValues
+            bmi_records.Reverse();
+
+            foreach (var item in bmi_records)  // Loop for sorting data
             {
                 bmiValues.Add(item.bmi);
-            }
-
-            foreach (var item in bmi_records)  // Loop for adding only weight to weightValues
-            {
                 weightValues.Add(item.weight);
-            }
-
-            foreach (var item in bmi_records)  // Loop for adding only height to heightValues
-            {
                 heightValues.Add(item.height);
-            }
-
-            foreach (var item in bmi_records)  // Loop for adding only adte to dateValues
-            {
                 dateValues.Add(item.date.ToString("dd.MM"));
             }
 
@@ -81,8 +71,8 @@ namespace BMI_client.Pages
                 {
                     Title = "BMI",
                     Values = bmiValues,
-                    PointGeometry = DefaultGeometries.Circle
-                     
+                    PointGeometry = DefaultGeometries.Circle,
+                    PointGeometrySize = 5
                 }
              };
 
@@ -92,8 +82,8 @@ namespace BMI_client.Pages
                 {
                     Title = "Weight",
                     Values = weightValues,
-                    PointGeometry = DefaultGeometries.Circle
-
+                    PointGeometry = DefaultGeometries.Circle,
+                    PointGeometrySize = 5
                 }
              };
 
@@ -103,12 +93,13 @@ namespace BMI_client.Pages
                 {
                     Title = "Height",
                     Values = heightValues,
-                    PointGeometry = DefaultGeometries.Circle
-
+                    PointGeometry = DefaultGeometries.Circle,
+                    PointGeometrySize = 5
                 }
              };
 
             Labels = dateValues.ToArray();
+            //Array.Sort(Labels);
             // Bind the data context to this instance
             DataContext = this;
         }
