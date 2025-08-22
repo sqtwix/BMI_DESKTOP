@@ -33,10 +33,7 @@ namespace BMI_client.Pages
     {
         public SeriesCollection BMISeries { get; set; }
         public SeriesCollection WeightSeries { get; set; }
-        public SeriesCollection HeightSeries { get; set; }
         public string[] Labels { get; set; }
-
-
 
 
         public StatsGraphicsPage()
@@ -49,7 +46,6 @@ namespace BMI_client.Pages
         {
             var bmiValues = new ChartValues<double> { };  //BMI Data for chart
             var weightValues = new ChartValues<double> { };  //Weight Data for chart
-            var heightValues = new ChartValues<double> { };  //Height Data for chart
             var dateValues = new List<string>();  //Date Data for chart
 
 
@@ -62,7 +58,6 @@ namespace BMI_client.Pages
             {
                 bmiValues.Add(item.bmi);
                 weightValues.Add(item.weight);
-                heightValues.Add(item.height);
                 dateValues.Add(item.date.ToString("dd.MM"));
             }
 
@@ -83,17 +78,6 @@ namespace BMI_client.Pages
                 {
                     Title = "Weight",
                     Values = weightValues,
-                    PointGeometry = DefaultGeometries.Circle,
-                    PointGeometrySize = 8
-                }
-             };
-
-            HeightSeries = new SeriesCollection  // Series Collection for building height chart
-            {
-                new LineSeries
-                {
-                    Title = "Height",
-                    Values = heightValues,
                     PointGeometry = DefaultGeometries.Circle,
                     PointGeometrySize = 8
                 }
