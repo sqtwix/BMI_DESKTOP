@@ -12,7 +12,5 @@ namespace BMI_client.Classes
         public float height { get; set; }
         public float bmi { get; set; }
         public DateTime date { get; set; }
-
-
     }
 }

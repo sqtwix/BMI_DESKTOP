@@ -88,14 +88,13 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="420"/>
                     <RowDefinition Height="420"/>
-                    <RowDefinition Height="420"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="700"/>
                 </Grid.ColumnDefinitions>
 
-                <lvc:CartesianChart Width="700" Grid.Row="0" Height="380" Series="{Binding BMISeries}"  LegendLocation="Right">
+                <lvc:CartesianChart Width="660" Grid.Row="0" Height="380" Series="{Binding BMISeries}"  LegendLocation="Right">
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Title="Дата" Labels="{Binding Labels}" Foreground="#0000a0" FontSize="16"></lvc:Axis>
                     </lvc:CartesianChart.AxisX>
@@ -104,7 +103,7 @@
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
 
-                <lvc:CartesianChart Width="700" Grid.Row="1" Height="380" Series="{Binding WeightSeries}" LegendLocation="Right">
+                <lvc:CartesianChart Width="660" Grid.Row="1" Height="380" Series="{Binding WeightSeries}" LegendLocation="Right">
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Title="Дата"  Foreground="#0000a0" FontSize="16" Labels="{Binding Labels}"></lvc:Axis>
                     </lvc:CartesianChart.AxisX>

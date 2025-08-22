@@ -15,12 +15,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Runtime.CompilerServices;
 
 namespace BMI_client.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для BMITrackingPage.xaml
-    /// </summary>
     public partial class BMITrackingPage : Page
     {
         public BMITrackingPage()
@@ -63,16 +61,33 @@ namespace BMI_client.Pages
             else if (s_weight == "") { MessageBox.Show("Введите вес!"); }
             else
             {   
+
+
                 double height = Convert.ToDouble(s_height);
                 double weight = Convert.ToDouble(s_weight);
 
                 result_BMI = Math.Round((weight / Math.Pow((height / 100.0), 2)), 2);
 
                 ResultLabel.Content = string.Format(" Ваш индекс массы тела: {0}", result_BMI );
+                ExtraInfoLabel.Content = GetExtraInfoAboutBMI(result_BMI);
                 SaveButton.Visibility = Visibility.Visible;
-            }
 
+            }
         }
+
+        public string GetExtraInfoAboutBMI(double result)
+        {
+            string info;
+            if (result < 16) { info = "Значительный дефицит массы тела"; }
+            else if (result >= 16 && result < 18.5) { info = "Недостаток массы тела"; }
+            else if (result >= 18.5 && result < 25) { info = "Норма веса"; }
+            else if (result >= 25 && result < 30) { info = "Излишки массы тела"; }
+            else if (result >= 30 && result < 35) { info = "Начальная степень ожирения"; }
+            else if (result >= 35 && result < 40) { info = "Средняя степень ожирения"; }
+            else { info = "Ожирение высокой степени"; }
+            return info;
+        }
+
 
         public async Task SaveStatsAPI(string weightStr, string heightStr, string bmiStr) // API for saving weight, height, bmi
         {

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BMI_client.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="800"
+      d:DesignHeight="510" d:DesignWidth="800"
       Title="BMITrackingPage">
 
     <Page.Background>
@@ -103,7 +103,7 @@
     </Page.Resources>
 
 
-    <Grid  Width="800" Height="500">
+    <Grid  Width="800" Height="510">
         <Label Content="BMI" FontWeight="Bold" Foreground="#0000a0" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,4,0,0"/>
 
         <Label x:Name="H" Content="Рост (см)"  Foreground="#0000a0" Height="42" Width="122" FontSize="28" Margin="74,98,604,360" />
@@ -114,7 +114,7 @@
         <TextBox Padding="5" Width="420" x:Name="Height" Style="{StaticResource TextBoxStyle}" FontSize="28" Height="54" Margin="199,92,181,354" />
         <TextBox Padding="5" Width="420"  x:Name="Weight" Style="{StaticResource TextBoxStyle}" FontSize="28" Height="54" Margin="199,180,181,266" />
 
-        <Button Width="230" Style="{StaticResource ElementButtonStyle}" Foreground="#0000a0" FontSize="30" Height="72" Click="FindingBMI" Margin="285,326,285,102" >
+        <Button Width="230" Style="{StaticResource ElementButtonStyle}" Foreground="#0000a0" FontSize="30" Height="72" Click="FindingBMI" Margin="285,361,285,77" >
             <TextBlock>Вычислить</TextBlock>
         </Button>
 
@@ -126,8 +126,10 @@
             <TextBlock>Сохранить</TextBlock>
         </Button>
 
-        <Label x:Name="ResultLabel" HorizontalContentAlignment="Stretch" Foreground="#0000a0"  Width="480" Height="60" FontSize="28" Margin="84,261,236,179"/>
+        <Label x:Name="ResultLabel" HorizontalContentAlignment="Stretch" Foreground="#0000a0"  Width="480" Height="44" FontSize="28" Margin="74,255,246,215"/>
 
+        <Label x:Name="ExtraInfoLabel" HorizontalContentAlignment="Stretch" Foreground="#0000a0"  Width="480" Height="44" FontSize="28" Margin="160,300,160,170"/>
+        
         <Button Width="64" Height="64" FontSize="30" Click="ToStatsGraphs" Style="{StaticResource ElementButtonStyle}" Margin="627,4,109,432">
             <TextBlock RenderTransformOrigin="0.224,0.3">	📈</TextBlock>
         </Button>
